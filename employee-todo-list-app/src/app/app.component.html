@@ -1,4 +1,17 @@
 <mat-toolbar color="primary">Todo Dashboard</mat-toolbar>
 
-
-<router-outlet></router-outlet>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <div>
+            <a>Dashboard</a>
+        </div>
+        <div>
+            <a>Employees</a>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="dashboard">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

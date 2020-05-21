@@ -1,0 +1,17 @@
+.example-container {
+    width: 100%!important;
+    height: 100%!important;
+    margin-left: 50px;
+  }
+  
+  mat-drawer-content {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard{
+    width:80%;
+    float:right;
+}
