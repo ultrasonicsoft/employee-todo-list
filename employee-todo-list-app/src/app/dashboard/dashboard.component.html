@@ -1,10 +1,18 @@
 <div class="row">
-    <div class="column" >
+    <div class="column">
         <h2>Employees</h2>
-        <p>Some text..</p>
+        <mat-selection-list #employees [multiple]="false">
+            <mat-list-option *ngFor="let employee of allEmployees" (click)="onEmployeeSelected(employee)">
+                {{employee.firstName}} {{employee.lastName}},
+            </mat-list-option>
+        </mat-selection-list>
     </div>
     <div class="column">
         <h2>Todo Items</h2>
-        <p>Some text..</p>
+        <mat-selection-list #todos [multiple]="false">
+            <mat-list-option *ngFor="let todo of allTodos" (click)="onTodoSelected(todo)">
+                {{todo.title}}
+            </mat-list-option>
+        </mat-selection-list>
     </div>
 </div>

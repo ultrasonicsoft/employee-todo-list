@@ -29,6 +29,17 @@ namespace employee_todo_list_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder =>
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .WithExposedHeaders("content-disposition")
+                    .AllowAnyHeader()
+                    .SetPreflightMaxAge(TimeSpan.FromSeconds(3600)));
+            });
+
             services.AddControllers();
 
             services.AddAutoMapper(typeof(Startup));
@@ -51,6 +62,9 @@ namespace employee_todo_list_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
+
 
             app.UseAuthorization();
 

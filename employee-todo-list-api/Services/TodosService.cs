@@ -28,7 +28,7 @@ namespace employee_todo_list_api.Services
             List<TodoDTO> allTodos = null;
             try
             {
-                var result = await todos.FindAsync(x => true);
+                var result = await todos.FindAsync(todo => todo.EmployeeId.Equals(employeeId));
                 allTodos = result.ToList();
             }
             catch (Exception ex)
