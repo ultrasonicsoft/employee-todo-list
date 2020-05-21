@@ -2,7 +2,7 @@
     <div class="column">
         <h2>Employees</h2>
         <mat-selection-list #employees [multiple]="false">
-            <mat-list-option *ngFor="let employee of allEmployees" (click)="onEmployeeSelected(employee)">
+            <mat-list-option [selected]="selectedEmployee.id == employee.id"  *ngFor="let employee of allEmployees;" (click)="onEmployeeSelected(employee)">
                 {{employee.firstName}} {{employee.lastName}},
             </mat-list-option>
         </mat-selection-list>
