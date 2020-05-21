@@ -3,7 +3,8 @@
     public interface IDbSettings
     {
         string EmployeesCollectionName { get; set; }
-
+        string TodosCollectionName { get; set; }
+        
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }
