@@ -5,6 +5,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
     exports: [
@@ -13,7 +19,13 @@ import { MatCardModule } from '@angular/material/card';
         MatSidenavModule,
         MatListModule,
         MatGridListModule,
-        MatCardModule
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatTableModule,
+        MatCheckboxModule,
+        MatRadioModule
     ]
 })
 export class SharedMatModule { }

@@ -4,14 +4,13 @@ import { DashboardComponent } from './dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedMatModule } from '../shared/shared-mat.module';
 import { DashboardRoutingModule } from './dashboard.routing';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [DashboardComponent],
     imports: [
         CommonModule,
         SharedMatModule,
-        FormsModule,
+        RouterModule,
         DashboardRoutingModule,
     ]
 })

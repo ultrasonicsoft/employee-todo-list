@@ -25,4 +25,13 @@ export class DataService {
         const url = ApiRoutes.GetTodoDetails.replace(`{employeeId}`, employeeId).replace(`{tipId}`, tipid);
         return this.httpClient.get<TodoModel>(url);
     }
+
+    createEmployeeRecord(newEmployeeRecord: EmployeeModel) {
+        return this.httpClient.post(ApiRoutes.CreateEmployeeRecord, newEmployeeRecord);
+    }
+
+    deleteEmployeeRecord(employeeId: string) {
+        const url = ApiRoutes.DeleteEmployee.replace(`{employeeId}`, employeeId);
+        return this.httpClient.delete(url);
+    }
 }

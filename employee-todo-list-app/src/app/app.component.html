@@ -2,12 +2,17 @@
 
 <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
-        <div>
-            <a>Dashboard</a>
-        </div>
-        <div>
-            <a>Employees</a>
-        </div>
+        <mat-selection-list #employees [multiple]="false">
+            <mat-list-option [selected]="true" routerLink="/dashboard">
+                Dashboard
+            </mat-list-option>
+            <mat-list-option routerLink="/employees">
+                Employees
+            </mat-list-option>
+            <mat-list-option routerLink="/todos">
+                Todos
+            </mat-list-option>
+        </mat-selection-list>
     </mat-drawer>
     <mat-drawer-content>
         <div class="dashboard">

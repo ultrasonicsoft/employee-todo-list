@@ -1,9 +1,13 @@
-<div class="row">
+<div *ngIf="allEmployees.length==0">
+    No employee data found. <a routerLink="/employees/new-employee">Please create employee records</a>
+</div>
+<div *ngIf="allEmployees.length!=0" class="row" #todoDashboard>
     <div class="column">
         <h2>Employees</h2>
         <mat-selection-list #employees [multiple]="false">
-            <mat-list-option [selected]="selectedEmployee.id == employee.id"  *ngFor="let employee of allEmployees;" (click)="onEmployeeSelected(employee)">
-                {{employee.firstName}} {{employee.lastName}},
+            <mat-list-option [selected]="selectedEmployee.id == employee.id" *ngFor="let employee of allEmployees;"
+                (click)="onEmployeeSelected(employee)">
+                {{employee.firstName}} {{employee.lastName}}
             </mat-list-option>
         </mat-selection-list>
     </div>
