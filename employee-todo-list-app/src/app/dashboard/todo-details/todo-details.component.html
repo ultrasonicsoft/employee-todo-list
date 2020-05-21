@@ -3,6 +3,10 @@
 </nav>
 
 <br>
+<button mat-stroked-button color="warn" (click)="deleteTodo()"> Delete</button>
+
+<br>
+<br>
 
 <mat-card class="example-card">
     <mat-card-header>
@@ -34,6 +38,9 @@
             <div *ngSwitchCase="3">
                 State: Closed
             </div>
+        </div>
+        <div>
+            Estimate: {{selectedTodo?.estimate | date:"shortDate"}}
         </div>
     </mat-card-content>
 

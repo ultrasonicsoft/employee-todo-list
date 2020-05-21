@@ -1,0 +1,49 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>New Todo</mat-card-title>
+        <mat-card-subtitle>Create new todo item</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" #newTodoForm="ngForm" (ngSubmit)="createTodo()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Enter title" [(ngModel)]="newTodo.title" name="title" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Enter description" [(ngModel)]="newTodo.description" name="description">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Priority</mat-label>
+                <mat-select [(ngModel)]="newTodo.priority" name="priority">
+                    <mat-option *ngFor="let key of priorityOptions; let i=index;" [value]="i">
+                        {{priorityOptions[i]}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>State</mat-label>
+                <mat-select [(ngModel)]="newTodo.state" name="state">
+                    <mat-option *ngFor="let key of stateOptions; let i=index;" [value]="i">
+                        {{stateOptions[i]}}
+                    </mat-option>
+                </mat-select>
+                
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="newTodo.estimate" name="estimate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-button type="submit" [disabled]="!newTodoForm.valid" color="primary">Create</button>
+                <button mat-button routerLink="/dashboard" color="warn">Cancel</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+
+</mat-card>

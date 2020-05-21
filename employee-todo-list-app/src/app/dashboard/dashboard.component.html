@@ -2,6 +2,8 @@
     No employee data found. <a routerLink="/employees/new-employee">Please create employee records</a>
 </div>
 <div *ngIf="allEmployees.length!=0" class="row" #todoDashboard>
+    <button mat-stroked-button color="primary" (click)="onNewTodo()">New Todo</button>
+
     <div class="column">
         <h2>Employees</h2>
         <mat-selection-list #employees [multiple]="false">
@@ -15,7 +17,7 @@
         <h2>Todo Items</h2>
         <mat-selection-list #todos [multiple]="false">
             <mat-list-option *ngFor="let todo of allTodos" (click)="onTodoSelected(todo)">
-                {{todo.title}}
+                {{todo.title}} ({{priorityOptions[todo.priority]}})
             </mat-list-option>
         </mat-selection-list>
     </div>

@@ -28,7 +28,8 @@ namespace employee_todo_list_api.Services
             List<TodoDTO> allTodos = null;
             try
             {
-                var result = await todos.FindAsync(todo => todo.EmployeeId.Equals(employeeId));
+                var result = todos.Find(todo => todo.EmployeeId.Equals(employeeId))
+                    .Sort("{Priority: 1}");
                 allTodos = result.ToList();
             }
             catch (Exception ex)
@@ -38,7 +39,7 @@ namespace employee_todo_list_api.Services
             return allTodos;
         }
 
-        
+
         internal async Task<bool> CreateTodo(TodoDTO newTodo)
         {
             var isCreated = false;
@@ -103,6 +104,21 @@ namespace employee_todo_list_api.Services
             catch (Exception ex)
             {
                 logger.LogError(ex, "Delete todo failed.");
+            }
+            return isDeleted;
+        }
+
+        internal async Task<bool> DeleteEmployeeTodos(string employeeId)
+        {
+            var isDeleted = false;
+            try
+            {
+                await todos.DeleteManyAsync(todo => todo.EmployeeId.Equals(employeeId));
+                isDeleted = true;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Delete Employee's todo failed.");
             }
             return isDeleted;
         }

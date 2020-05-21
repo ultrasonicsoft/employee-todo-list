@@ -28,10 +28,10 @@ namespace employee_todo_list_api.Controllers
 
         // GET: api/Todos
         [HttpGet("{employeeId}", Name = "GetEmployeeTodos")]
-        public async Task<IEnumerable<TodoViewModel>> GetEmployeeTodos(string employeeId)
+        public async Task<IEnumerable<TodoOverviewViewModel>> GetEmployeeTodos(string employeeId)
         {
             var Todos = await todosService.GetEmployeeTodos(employeeId);
-            var result = mapper.Map<List<TodoDTO>, IEnumerable<TodoViewModel>>(Todos);
+            var result = mapper.Map<List<TodoDTO>, IEnumerable<TodoOverviewViewModel>>(Todos);
             return result;
         }
 

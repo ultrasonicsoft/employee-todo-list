@@ -40,6 +40,16 @@ namespace employee_todo_list_api
                     .SetPreflightMaxAge(TimeSpan.FromSeconds(3600)));
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Employee TODO service",
+                    Version = "v1",
+                    Description = "A simple employee todo list",
+                });
+            });
+
             services.AddControllers();
 
             services.AddAutoMapper(typeof(Startup));
@@ -54,6 +64,12 @@ namespace employee_todo_list_api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee TODO list");
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -12,8 +12,7 @@ const routes: Routes = [
         redirectTo: '/dashboard',
         pathMatch: 'full'
     },
-    { path: 'employees', loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule) },
-    { path: 'todos', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) }
+    { path: 'employees', loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule) }
 ];
 
 @NgModule({

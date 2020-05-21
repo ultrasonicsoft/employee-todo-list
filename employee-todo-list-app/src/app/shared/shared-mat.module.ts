@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     exports: [
@@ -25,7 +28,10 @@ import { MatRadioModule } from '@angular/material/radio';
         FormsModule,
         MatTableModule,
         MatCheckboxModule,
-        MatRadioModule
+        MatRadioModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ]
 })
 export class SharedMatModule { }

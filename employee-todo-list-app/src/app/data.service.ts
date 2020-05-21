@@ -21,8 +21,8 @@ export class DataService {
         return this.httpClient.get<Array<TodoModel>>(url);
     }
 
-    getTodoDetails(employeeId: string, tipid: string): Observable<TodoModel> {
-        const url = ApiRoutes.GetTodoDetails.replace(`{employeeId}`, employeeId).replace(`{tipId}`, tipid);
+    getTodoDetails(employeeId: string, todoId: string): Observable<TodoModel> {
+        const url = ApiRoutes.GetTodoDetails.replace(`{employeeId}`, employeeId).replace(`{todoId}`, todoId);
         return this.httpClient.get<TodoModel>(url);
     }
 
@@ -30,8 +30,17 @@ export class DataService {
         return this.httpClient.post(ApiRoutes.CreateEmployeeRecord, newEmployeeRecord);
     }
 
+    createNewTodo(newTodo: TodoModel) {
+        return this.httpClient.post(ApiRoutes.CreateTodo, newTodo);
+    }
+
     deleteEmployeeRecord(employeeId: string) {
         const url = ApiRoutes.DeleteEmployee.replace(`{employeeId}`, employeeId);
+        return this.httpClient.delete(url);
+    }
+
+    deleteTodo(todoId: string){
+        const url = ApiRoutes.DeleteTodo.replace(`{todoId}`, todoId);
         return this.httpClient.delete(url);
     }
 }

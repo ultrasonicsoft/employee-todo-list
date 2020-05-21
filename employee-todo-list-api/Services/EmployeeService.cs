@@ -6,6 +6,7 @@ using employee_todo_list_api.Models;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Linq;
 
 namespace employee_todo_list_api.Services
 {
@@ -13,10 +14,13 @@ namespace employee_todo_list_api.Services
     {
         private readonly IMongoCollection<EmployeeDTO> employees;
         private readonly ILogger<EmployeeService> logger;
+        private readonly TodosService todosService;
 
         public EmployeeService(IDbSettings dbSettings,
+            TodosService todosService,
             ILogger<EmployeeService> logger)
         {
+            this.todosService = todosService;
             this.logger = logger;
             var client = new MongoClient(dbSettings.ConnectionString);
             var db = client.GetDatabase(dbSettings.DatabaseName);
@@ -28,7 +32,7 @@ namespace employee_todo_list_api.Services
             List<EmployeeDTO> allEmployees = null;
             try
             {
-                var result = await employees.FindAsync(x => true);
+                var result = employees.Find(x => true).Sort("{FirstName: 1}");
                 allEmployees = result.ToList();
             }
             catch (Exception ex)
@@ -96,6 +100,7 @@ namespace employee_todo_list_api.Services
             try
             {
                 await employees.DeleteOneAsync(emp => ObjectId.Parse(id).Equals(emp.Id));
+                await todosService.DeleteEmployeeTodos(id);
                 isDeleted = true;
             }
             catch (Exception ex)

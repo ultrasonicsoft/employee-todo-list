@@ -10,6 +10,8 @@ namespace employee_todo_list_api.AutoMappers
         public TodoProfile()
         {
             CreateMap<TodoDTO, TodoViewModel>();
+
+            CreateMap<TodoDTO, TodoOverviewViewModel>();
         }
     }
 }
