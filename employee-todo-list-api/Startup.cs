@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using employee_todo_list_api.Models;
+using employee_todo_list_api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace employee_todo_list_api
 {
@@ -26,6 +29,10 @@ namespace employee_todo_list_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.Configure<DbSettings>(Configuration.GetSection(nameof(DbSettings)));
+            services.AddSingleton<IDbSettings>(sp => sp.GetRequiredService<IOptions<DbSettings>>().Value);
+            services.AddSingleton<EmployeeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
