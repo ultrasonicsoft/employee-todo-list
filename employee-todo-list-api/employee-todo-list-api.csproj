@@ -19,7 +19,6 @@
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
     <Folder Include="AutoMappers\" />
-    <Folder Include="BusinessLogic\" />
     <Folder Include="Db\" />
   </ItemGroup>
 </Project>

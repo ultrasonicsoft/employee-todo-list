@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/data.service';
-import { TodoModel } from 'src/app/models/todo.model';
-import { PriorityStatus } from 'src/app/models/priority-status.enum';
-import { States } from 'src/app/models/states.enum';
+import { DataService } from '../app/data.service';
+import { TodoModel } from '../app/models/todo.model';
+import { PriorityStatus } from '../app/models/priority-status.enum';
+import { States } from '../app/models/states.enum';
 
 @Component({
     selector: 'app-new-todo',
